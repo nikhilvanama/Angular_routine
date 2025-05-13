@@ -9,5 +9,11 @@ import { FooterAppComponent } from "./footer-app/footer-app.component";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'angular1';
+  title = 'angular19';
+
+  d:string = new Date().toLocaleTimeString();
+
+  timer = setInterval(() => {
+    this.d = new Date().toLocaleTimeString();
+  }, 1000);
 }
