@@ -11,9 +11,16 @@ import { FooterAppComponent } from "./footer-app/footer-app.component";
 export class AppComponent {
   title = 'angular19';
 
-  d:string = new Date().toLocaleTimeString();
+  vcol:string = 'brown';
+  red:string = 'red';
 
-  timer = setInterval(() => {
-    this.d = new Date().toLocaleTimeString();
-  }, 1000);
+  gcol:object = {
+    'background-color': 'green',
+    'color': 'white',
+    'font-size': '20px',
+    'font-weight': 'bold',
+    'padding': '10px'
+  };
+
+  isactive: boolean = false;
 }
