@@ -225,11 +225,17 @@
           <clipPath id="a"><path fill="#fff" d="M0 0h982v239H0z" /></clipPath>
         </defs>
       </svg>
-      <h1 [class]="isactive?'active':'inactive'">Hello, {{title}}</h1>
-      <h1 [class]="{'active':true, 'inactive':false}">Hello, {{title}}</h1>
+      <h1>Hello, {{title}}</h1>
 
-      <h3 [style]=" gcol ">Kali Krishna</h3>
-      <app-footer-app></app-footer-app>
+      <button (click)="increment()">Increase</button>
+      <button (click)="decrement()">Decrease</button>
+      <h1>Counter : {{counter}}</h1>
+      <br>
+      Enter your name: <input type="text" on-input="changeName($event)">
+      <h1> Hello {{name}}</h1>
+      <br>
+      Enter Name : <input type="text" [(ngModel)] = "city">
+      <h1> Hello {{city}}</h1>
       <p>Congratulations! Your app is running. 🎉</p>
     </div>
     <div class="divider" role="separator" aria-label="Divider"></div>
