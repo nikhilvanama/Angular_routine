@@ -3,10 +3,11 @@ import { RouterOutlet } from '@angular/router';
 import { FooterAppComponent } from "./footer-app/footer-app.component";
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { TestpipePipe } from './testpipe.pipe';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, FooterAppComponent, FormsModule, CommonModule],
+  imports: [RouterOutlet, FooterAppComponent, FormsModule, CommonModule, TestpipePipe],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
@@ -68,4 +69,12 @@ export class AppComponent {
     age: 25,
     city: "Hyderabad"
   };
+
+  person = {
+    name: "Kali",
+    gender: "f",
+  };
+
+  wish = "Good Morning";
+
 }

@@ -301,7 +301,7 @@
         <p *ngSwitchCase="'-'">{{num1}} - {{num2}} = {{num1-num2}} </p>
         <p *ngSwitchCase="'*'">{{num1}} * {{num2}} = {{num1*num2}} </p>
         <p *ngSwitchCase="'/'">{{num1}} / {{num2}} = {{num1/num2}} </p>
-        <p *ngSwitchDefault="'+'">Invalid</p>
+        <p *ngSwitchDefault="">Invalid</p>
       </div>
       <hr>
       <!-- Pipes -->
@@ -321,6 +321,10 @@
       <p>{{ man | json }}</p>
 
       <p>{{ 'MicrosoftEdge' | slice:0:9 }}</p>
+
+      <!-- Custom Pipe -->
+
+      <p>{{ person | testpipe:wish }}</p>
 
     </div>
     <div class="divider" role="separator" aria-label="Divider"></div>
