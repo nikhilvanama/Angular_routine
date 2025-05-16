@@ -27,9 +27,9 @@ export class AppComponent {
     this.counter = 0;
   }
 
-  name:string = "";
+  name: string = "";
 
-  changeName(e:any){
+  changeName(e: any) {
     console.log(e);
     console.log(e.target.value);
     this.name = e.target.value;
@@ -37,7 +37,7 @@ export class AppComponent {
 
   city: string = "Hyderabad";
 
-  name_ng:string = "";
+  name_ng: string = "";
 
   isTrue = "5";
 
@@ -59,10 +59,10 @@ export class AppComponent {
   ];
 
   symbol: string = "";
-  num1:number = 4;
-  num2:number = 5;
+  num1: number = 4;
+  num2: number = 5;
 
-  today:string = new Date().toLocaleDateString();
+  today: string = new Date().toLocaleDateString();
 
   man = {
     name: "Kali",
@@ -77,4 +77,21 @@ export class AppComponent {
 
   wish = "Good Morning";
 
+  peru = "";
+
+  UpdateText(ip: string) {
+    this.peru = ip;
+  }
+
+  childtitle = "Data is taken from parent to child";
+  childtitle1 = [8, 10, 92, 8, 63, 53];
+
+  childtitle3 = "Data is taken from parent to child second time";
+  childtitle4 = [1, 2, 3, 4, 5, 6];
+
+  received = '';
+
+  receiveMessage(message: string) {
+    this.received = message;
+  }
 }

@@ -1,1 +1,12 @@
-<h1>Foot {{ title }}</h1>
+<h3>{{ parentdata }}</h3>
+<h3>{{ parentdata1 }}</h3>
+
+<div *ngFor="let i of parentdata1">
+    {{ i }}
+</div>
+
+<p>This is Footer Component</p>
+
+<button (click)="sendMessage()">Send</button>
+
+<!-- <button (click)="passtoparent()">Send</button> -->
