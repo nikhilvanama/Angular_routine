@@ -357,7 +357,12 @@
         <app-footer-app (messageEvent)="receiveMessage($event)"></app-footer-app>
         <p>{{ received }}</p>
       </div>
-      
+      <hr>
+      <!-- Data from Child to Parent using Template Reference Variable -->
+      <div>
+        <app-footer-app #child [parentdata]="childtitle3"></app-footer-app>
+        <p>{{ child.data }}</p>
+      </div>
     </div>
     <div class="divider" role="separator" aria-label="Divider"></div>
     <div class="right-side">

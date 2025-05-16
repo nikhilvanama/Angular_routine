@@ -94,4 +94,6 @@ export class AppComponent {
   receiveMessage(message: string) {
     this.received = message;
   }
+
+
 }
