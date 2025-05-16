@@ -24,4 +24,13 @@ export class FooterAppComponent {
   // child-parent using template reference variable
 
   data:string = "data passed from child to parent using template reference variable";
+
+  // data From child to parent using @ViewChild decorator
+
+  viewchild: any = "@ViewChild decorator";
+
+  passtoparent() {
+    console.log(this.viewchild);
+    return this.viewchild;
+  }
 }

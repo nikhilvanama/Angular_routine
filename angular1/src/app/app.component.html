@@ -360,8 +360,15 @@
       <hr>
       <!-- Data from Child to Parent using Template Reference Variable -->
       <div>
-        <app-footer-app #child [parentdata]="childtitle3"></app-footer-app>
+        <app-footer-app #child></app-footer-app>
         <p>{{ child.data }}</p>
+      </div>
+      <hr>
+      <!-- @ViewChild  -->
+      <div>
+        <app-footer-app></app-footer-app>
+        <button (click)="callChildMethod()">submit</button>
+        <p>{{ cdata }}</p>
       </div>
     </div>
     <div class="divider" role="separator" aria-label="Divider"></div>

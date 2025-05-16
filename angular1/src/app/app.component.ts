@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { FooterAppComponent } from "./footer-app/footer-app.component";
 import { FormsModule } from '@angular/forms';
@@ -95,5 +95,11 @@ export class AppComponent {
     this.received = message;
   }
 
+  @ViewChild(FooterAppComponent) viewChildData!: FooterAppComponent;
+  cdata="";
+
+  callChildMethod() {
+    this.cdata=this.viewChildData.passtoparent();
+  }
 
 }
