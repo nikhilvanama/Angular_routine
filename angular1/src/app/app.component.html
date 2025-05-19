@@ -358,18 +358,25 @@
         <p>{{ received }}</p>
       </div>
       <hr>
+
       <!-- Data from Child to Parent using Template Reference Variable -->
       <div>
         <app-footer-app #child></app-footer-app>
         <p>{{ child.data }}</p>
       </div>
       <hr>
+
       <!-- @ViewChild  -->
       <div>
         <app-footer-app></app-footer-app>
         <button (click)="callChildMethod()">submit</button>
         <p>{{ cdata }}</p>
       </div>
+      <hr>
+
+      <!-- DOM Manipulation -->
+       <p #dom>This is Parent</p>
+       <button (click)="change()">DOM</button>
     </div>
     <div class="divider" role="separator" aria-label="Divider"></div>
     <div class="right-side">

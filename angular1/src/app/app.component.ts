@@ -96,10 +96,19 @@ export class AppComponent {
   }
 
   @ViewChild(FooterAppComponent) viewChildData!: FooterAppComponent;
-  cdata="";
+  cdata = "";
 
   callChildMethod() {
-    this.cdata=this.viewChildData.passtoparent();
+    this.cdata = this.viewChildData.passtoparent();
+  }
+
+  @ViewChild('dom') d: any;
+
+  change() {
+    console.log(this.d);
+
+    this.d.nativeElement.style.color = "red";
+    this.d.nativeElement.style.fontSize = "30px";
   }
 
 }
