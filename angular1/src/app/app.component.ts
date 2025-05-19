@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, AfterViewInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { FooterAppComponent } from "./footer-app/footer-app.component";
 import { FormsModule } from '@angular/forms';
@@ -102,13 +102,23 @@ export class AppComponent {
     this.cdata = this.viewChildData.passtoparent();
   }
 
-  @ViewChild('dom') d: any;
-
+  @ViewChild('dom') d: any; // Document.getElementById('dom'); (This is Similar to this)
   change() {
-    console.log(this.d);
-
     this.d.nativeElement.style.color = "red";
     this.d.nativeElement.style.fontSize = "30px";
   }
+
+  @ViewChild('i') i: any;
+  @ViewChild('d') e: any;
+
+  ngAfterViewInit() {
+    // Make sure both are available
+    if (this.i && this.e) {
+      this.e.nativeElement.onkeyup = ()=>{
+        console.log('e input value:', this.e.nativeElement.value);
+      };
+    }
+  }
+
 
 }

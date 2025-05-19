@@ -342,7 +342,7 @@
       <hr>
 
       <!-- Component Communication -->
-       <!-- @input Parent to child -->
+      <!-- @input Parent to child -->
       <div>
         <app-footer-app [parentdata]="childtitle" [parentdata1]="childtitle1"></app-footer-app>
       </div>
@@ -375,8 +375,14 @@
       <hr>
 
       <!-- DOM Manipulation -->
-       <p #dom>This is Parent</p>
-       <button (click)="change()">DOM</button>
+      <p #dom>This is Parent</p>
+      <button (click)="change()">DOM</button>
+      <br>
+      <input #i type="text" placeholder="Type something..." />
+      <input #e type="text" value="Other Input" />
+      <hr>
+
+      
     </div>
     <div class="divider" role="separator" aria-label="Divider"></div>
     <div class="right-side">
