@@ -1,1 +1,17 @@
 Hello Angular 2
+
+@if(show){
+  <p>Condition is true</p>
+}
+@else{
+  <p>Condition is false</p>
+}
+
+<!-- Signals -->
+
+<p>{{count()}}</p>
+
+<button (click)="count.set(count()+1)">Increase</button>
+
+<p>{{ num() }}</p>
+<p>{{ num2() }}</p>
