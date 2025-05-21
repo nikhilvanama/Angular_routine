@@ -1,34 +1,29 @@
 import { CommonModule } from '@angular/common';
-import { Component, computed, effect, Signal, signal, WritableSignal } from '@angular/core';
-import { RouterModule, RouterOutlet } from '@angular/router';
+import { Component} from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
-import { HomeComponent } from './home/home.component';
-import { AboutComponent } from './about/about.component';
-import { ContactComponent } from './contact/contact.component';
-import { HeaderComponent } from './header/header.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CommonModule, RouterModule, HomeComponent, ContactComponent, AboutComponent, HeaderComponent],
+  imports: [RouterOutlet, CommonModule, FormsModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'angular2';
+  title = 'todo-app';
+  task: string = "";
+  taskList: { id: number, task: string }[] = [];
 
-  show = true;
-
-  count = signal(20);
-
-  constructor() {
-    effect(()=> {
-      console.log(this.count());
-    })
+  Addtask() {
+    this.taskList.push({ id: this.taskList.length + 1, task: this.task });
+    console.log(this.taskList);
+    this.task = "";
   }
 
-  num : WritableSignal<number> = signal(40);
-
-  num2:Signal<number> = computed(()=> 200);
+  Deletetask(taskId: number) {
+    this.taskList = this.taskList.filter(task => task.id != taskId);
+  }
 }
  

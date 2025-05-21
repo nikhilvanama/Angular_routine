@@ -1,17 +1,16 @@
-Hello Angular 2
+<h1>Todo App</h1>
 
-@if(show){
-  <p>Condition is true</p>
+<div>
+  <input type="text" [(ngModel)]="task" placeholder="Enter Task Name">
+  <button (click)="Addtask()">Add Task</button>
+</div>
+
+@for(task of taskList; track task.id){
+  <ul class="taskList">
+    <li>{{task.id}}</li>
+    <li>{{task.task}}</li>
+    <li>
+      <button (click)="Deletetask(task.id)">Delete</button>
+    </li>
+  </ul>
 }
-@else{
-  <p>Condition is false</p>
-}
-
-<!-- Signals -->
-
-<p>{{count()}}</p>
-
-<button (click)="count.set(count()+1)">Increase</button>
-
-<p>{{ num() }}</p>
-<p>{{ num2() }}</p>
