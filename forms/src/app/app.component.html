@@ -1,0 +1,60 @@
+<h1>Introduction to Forms</h1>
+
+<!-- Basic Reactive Forms -->
+<!-- <form action="#" method="post">
+  <input type="text" placeholder="Enter Username" [formControl]="name">
+  <br><br>
+  <input type="text" placeholder="Enter password" [formControl]="password">
+  <br><br>
+  <button type="button" (click)="displayvalue()">Login</button>
+  <button type="button" (click)="setvalues()">Set Values</button>
+  
+  <h3>{{name.value}}</h3>
+  <h3>{{password.value}}</h3>
+</form> -->
+
+<!-- Form Validators and form grouping -->
+<!-- <form [formGroup]="profileForm" (ngSubmit)="OnSubmit()">
+  <input type="text" placeholder="Enter Username" formControlName="name">
+  <span *ngIf="name?.hasError('required')">Name is Required</span>
+  <span *ngIf="name?.invalid &&(name?.dirty || name?.touched)">Please Enter Username</span>
+  <br><br>
+  <input type="text" placeholder="Enter password" formControlName="password">
+  <span *ngIf="password?.hasError('required')">Password is Required</span>
+  <span *ngIf="password?.invalid &&(password?.dirty || password?.touched)">Please Enter Password</span>
+  <br><br>
+  <input type="email" placeholder="Enter email" formControlName="email">
+  <span *ngIf="email?.hasError('required')">Email is Required</span>
+  <span *ngIf="email?.invalid &&(email?.dirty || email?.touched)">Please Enter Email</span>
+  <br><br>
+  <button>Submit</button>
+</form> -->
+
+<!-- Template Driven Forms -->
+
+<form #userform="ngForm" (ngSubmit)="addDetails(userform.value)">
+  <input #name="ngModel" type="text" required placeholder="Enter Username" name="name" ngModel>
+  <span *ngIf="name.invalid && name.touched">Name is Required</span>
+  <br><br>
+  <input type="text" minlength="5" required #password="ngModel" placeholder="Enter password" name="password" ngModel>
+  <span *ngIf="password.invalid && password.touched">Password is Required</span>
+  <br><br>
+  <input type="email" required email #email="ngModel" placeholder="Enter email" name="email" ngModel>
+  <span *ngIf="email.invalid && email.touched">email is Required</span>
+  <br><br>
+  <select required #gender="ngModel" name="gender" ngModel>
+    <option value="">Select Gender</option>
+    <option value="Male">Male</option>
+    <option value="Female">Female</option>
+  </select>
+  <span *ngIf="gender.invalid && gender.touched">Select Valid Gender</span>
+  <br><br>
+  <input type="range" min="1" max="10" name="range" ngModel>
+  <br><br>
+  <button [disabled]="userform.invalid">Submit</button>
+</form>
+
+<h3>{{userdetails?.name}}</h3>
+<h3>{{userdetails?.password}}</h3>
+<h3>{{userdetails?.gender}}</h3>
+<h3>{{userdetails?.range}}</h3>
