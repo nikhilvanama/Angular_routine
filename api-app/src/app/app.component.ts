@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { ProductsService } from './services/products.service';
+import { UsersService } from './services/users.service';
+import { User } from './interfaces/user';
 
 @Component({
   selector: 'app-root',
@@ -11,15 +13,34 @@ import { ProductsService } from './services/products.service';
 export class AppComponent {
   title = 'api-app';
 
-  constructor(private productser:ProductsService){}
+  // API Calling in Angular
 
-  productList:any;
+  // constructor(private productser:ProductsService, UserSer:UsersService){}
+  // productList:any;
+  
+  // ngOnInit(){
+  //   this.productser.getProductList().subscribe((data:any)=>{
+  //     console.log(data);
+  
+  //     this.productList=data.products; 
+  //   })
+  // }
 
-  ngOnInit(){
-    this.productser.getProductList().subscribe((data:any)=>{
-      console.log(data);
+  
+  // API calling using Json Server
 
-      this.productList=data.products;
-    })
-  }
+  // constructor(private UserSer:UsersService){}
+  // users:User[]=[];
+
+  // ngOnInit(){
+  //   this.UserSer.getUsers().subscribe((data:User[])=>{
+  //     console.log(data);
+
+  //     this.users=data;
+  //   })
+  // }
+
+
+  // API Operations using Forms
+  
 }
