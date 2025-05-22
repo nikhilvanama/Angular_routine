@@ -71,3 +71,11 @@
 @for (user of users; track user) {
   <p>{{user}}</p>
 } -->
+
+<!-- Services in Angular -->
+
+<button (click)="getProductData()">Product Data</button>
+
+@for (item of Productdata; track item) {
+  <p>{{item.name}}, {{item.Age}}, {{item.code}}</p>
+}

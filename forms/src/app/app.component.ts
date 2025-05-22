@@ -2,6 +2,7 @@ import { NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule, NgForm, ReactiveFormsModule } from '@angular/forms';
 import { UserComponent } from './user/user.component';
+import { ProductsService } from './services/products.service';
 
 @Component({
   selector: 'app-root',
@@ -66,4 +67,17 @@ export class AppComponent {
   //   this.users = persons
   // }
 
+  // Services in Angular
+  constructor(private productsSer:ProductsService){}
+
+  Productdata:{
+    name: string;
+    Age: number;
+    code: string;
+}[] | undefined;
+
+  getProductData(){
+    this.Productdata=this.productsSer.SendProductData();
+    console.log(this.Productdata)
+  }
 }
