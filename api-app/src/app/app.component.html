@@ -10,8 +10,32 @@
 } -->
 
 <!-- API Calling Using JSON Server -->
-<!-- @for (user of users; track users) {
-  <p>{{user.name}}</p>
-} -->
+ <div class="users" style="display: grid; grid-template-columns: repeat(3, 1fr); grid-gap: 10px; margin: 20px 0px;">
+   @for (user of users; track users) {
+     <div class="user" style="border: 1px solid #000; padding: 16px;">
+       <p>{{user.name}}</p>
+       <p>{{user.email}}</p>
+       <p>{{user.age}}</p>
+       <button (click)="deleteUser(user.id)">Delete</button>
+       <button (click)="selectUser(user.id)">Update</button>
+       <br>
+     </div>
+   }
+ </div>
 
 <!-- API operations using forms -->
+
+<form #userform="ngForm" (ngSubmit)="addUser(userform.value)">
+  <input type="text" placeholder="Enter Name" name="name" [ngModel]="selectedUserdata?.name">
+  <br><br>
+  <input type="text" placeholder="Enter Email" name="email" [ngModel]="selectedUserdata?.email">
+  <br><br>
+  <input type="text" placeholder="Enter Age" name="age" [ngModel]="selectedUserdata?.age">
+  <br><br>
+  @if(!selectUser){
+    <button>Add User</button>
+  }
+  @else{
+    <button>Update</button>
+  }
+</form>
