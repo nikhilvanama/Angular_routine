@@ -32,7 +32,7 @@
 
 <!-- Template Driven Forms -->
 
-<form #userform="ngForm" (ngSubmit)="addDetails(userform.value)">
+<!-- <form #userform="ngForm" (ngSubmit)="addDetails(userform.value)">
   <input #name="ngModel" type="text" required placeholder="Enter Username" name="name" ngModel>
   <span *ngIf="name.invalid && name.touched">Name is Required</span>
   <br><br>
@@ -57,4 +57,17 @@
 <h3>{{userdetails?.name}}</h3>
 <h3>{{userdetails?.password}}</h3>
 <h3>{{userdetails?.gender}}</h3>
-<h3>{{userdetails?.range}}</h3>
+<h3>{{userdetails?.range}}</h3> -->
+
+<!-- Pass Data from Parent to Child -->
+<!-- @for(user of users; track user){
+    <app-user [user]="user"></app-user>
+} -->
+
+<!-- Pass Data from Child to Parent -->
+
+<!-- <app-user (getUsers)="handleUser($event)"></app-user> 
+
+@for (user of users; track user) {
+  <p>{{user}}</p>
+} -->

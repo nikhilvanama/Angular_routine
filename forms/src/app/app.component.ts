@@ -1,10 +1,11 @@
 import { NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule, NgForm, ReactiveFormsModule } from '@angular/forms';
+import { UserComponent } from './user/user.component';
 
 @Component({
   selector: 'app-root',
-  imports: [ReactiveFormsModule, FormsModule, NgIf],
+  imports: [ReactiveFormsModule, FormsModule, NgIf, UserComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -49,9 +50,20 @@ export class AppComponent {
   // }
 
   // Template Driven Forms
-  userdetails:any;
-  addDetails(val:NgForm){
-    console.log(val);
-    this.userdetails=val;
-  }
+  // userdetails:any;
+  // addDetails(val:NgForm){
+  //   console.log(val);
+  //   this.userdetails=val;
+  // }
+
+  // Pass Data from Parent to Child
+  // users=['Nick', 'Peter', 'Kali', 'Krishna', 'John'];
+
+  // Pass Data from child to Parent
+  // users:undefined | string ='';
+
+  // handleUser(persons:string){
+  //   this.users = persons
+  // }
+
 }
