@@ -23,9 +23,6 @@ export class TaskFormComponent {
   })
 
   onSubmit() {
-    console.log(this.taskForm.value);
-    // Here you would typically send the form data to a server or handle it as needed
-
     const taskValue = this.taskForm.getRawValue();
     this.taskService.addTask(taskValue.task, taskValue.status); // Use the service to add the task
 
