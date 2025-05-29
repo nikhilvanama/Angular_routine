@@ -4,6 +4,7 @@ import { FormsModule, NgForm, ReactiveFormsModule } from '@angular/forms';
 import { UserComponent } from './user/user.component';
 import { ProductsService } from './services/products.service';
 import { GoogleGenAI } from "@google/genai";
+import { environment } from './environment';
 
 @Component({
   selector: 'app-root',
@@ -84,7 +85,7 @@ export class AppComponent {
 
   // Gemini API Testing
 
-  ai = new GoogleGenAI({ apiKey: "" });
+  ai = new GoogleGenAI({ apiKey: `${environment.apiKey}`});
 
   async main() {
     const response = await this.ai.models.generateContent({
