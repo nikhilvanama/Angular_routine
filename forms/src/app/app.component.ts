@@ -4,7 +4,7 @@ import { FormsModule, NgForm, ReactiveFormsModule } from '@angular/forms';
 import { UserComponent } from './user/user.component';
 import { ProductsService } from './services/products.service';
 import { GoogleGenAI } from "@google/genai";
-import { environment } from './environment';
+import { environment } from './environments/environment';
 
 @Component({
   selector: 'app-root',
