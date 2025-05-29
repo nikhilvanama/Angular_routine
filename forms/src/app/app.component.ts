@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormsModule, NgForm, ReactiveFormsModule } from '@angular/forms';
 import { UserComponent } from './user/user.component';
 import { ProductsService } from './services/products.service';
+import { GoogleGenAI } from "@google/genai";
 
 @Component({
   selector: 'app-root',
@@ -68,16 +69,46 @@ export class AppComponent {
   // }
 
   // Services in Angular
-  constructor(private productsSer:ProductsService){}
+  constructor(private productsSer: ProductsService) { }
 
-  Productdata:{
+  Productdata: {
     name: string;
     Age: number;
     code: string;
-}[] | undefined;
+  }[] | undefined;
 
-  getProductData(){
-    this.Productdata=this.productsSer.SendProductData();
+  getProductData() {
+    this.Productdata = this.productsSer.SendProductData();
     console.log(this.Productdata)
   }
+
+  // Gemini API Testing
+
+  ai = new GoogleGenAI({ apiKey: "AIzaSyABu9t5Bkwzm5JVifSw3lvglhPlBvEQdno" });
+
+  async main() {
+    const response = await this.ai.models.generateContent({
+      model: "gemini-2.0-flash",
+      contents: "angularjs meaning",
+    });
+    console.log(response.text);
+  }
+
+  async callGeminiAPI() {
+    try {
+      const response = await this.ai.models.generateContent({
+        model: "gemini-2.0-flash",
+        contents: "Explain how AI works in a few words",
+      });
+      console.log(response.text);
+    } catch (error) {
+      console.error("Error calling Gemini API:", error);
+    }
+  }
+
+  ngOnInit() {
+    this.main();
+    this.callGeminiAPI();
+  }
+
 }
