@@ -84,7 +84,7 @@ export class AppComponent {
 
   // Gemini API Testing
 
-  ai = new GoogleGenAI({ apiKey: "AIzaSyABu9t5Bkwzm5JVifSw3lvglhPlBvEQdno" });
+  ai = new GoogleGenAI({ apiKey: "" });
 
   async main() {
     const response = await this.ai.models.generateContent({
