@@ -11,6 +11,7 @@ import { TestpipePipe } from './testpipe.pipe';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent {
   title = 'Angular19';
 
