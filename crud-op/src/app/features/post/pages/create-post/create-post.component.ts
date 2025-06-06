@@ -1,9 +1,10 @@
+import { NgIf } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-create-post',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, NgIf],
   templateUrl: './create-post.component.html',
   styleUrl: './create-post.component.css'
 })
@@ -15,10 +16,18 @@ export class CreatePostComponent {
     image: new FormControl('', [Validators.required]),
   });
 
+  get title() {
+    return this.CreatePostForm.controls.title;
+  }
+
+  get description() {
+    return this.CreatePostForm.controls.description;
+  }
+
   onSubmit() {
     const postValue = this.CreatePostForm.getRawValue();
     console.log('Post Value:', postValue);
     console.log(this.CreatePostForm.value);
-  } 
+  }
 
 }
