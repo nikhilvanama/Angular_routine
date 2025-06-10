@@ -5,5 +5,5 @@ import { ExpenseFormComponent } from './pages/expense-form/expense-form.componen
 export const routes: Routes = [
     { path: '', component: ExpenseComponent },
     { path: 'expenseform', component: ExpenseFormComponent },
-    { path: 'expenseform/:id', component: ExpenseFormComponent },
+    { path: 'expenseform/:key', component: ExpenseFormComponent },
 ];

@@ -1,6 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators, FormBuilder } from '@angular/forms';
+import { ExpenseService } from '../../core/services/expense.service';
+import { IExpense } from '../../core/models/common.model';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-expense-form',
@@ -8,13 +11,35 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
   templateUrl: './expense-form.component.html',
   styleUrl: './expense-form.component.css'
 })
-export class ExpenseFormComponent {
 
-  expenseForm = new FormGroup({
-    price: new FormControl<string>('', [Validators.required, Validators.minLength(1)]),
-    title: new FormControl<string>('', [Validators.required, Validators.minLength(5)]),
-    description: new FormControl<string>('', [Validators.required, Validators.minLength(10), Validators.maxLength(500)]),
-  });
+export class ExpenseFormComponent implements OnInit {
+
+  expenses: IExpense[] = [];
+
+  constructor(private expenseSer: ExpenseService, private router: Router, private fb: FormBuilder, private activetedRoute: ActivatedRoute) {
+    this.expenseForm = this.fb.group({
+      price: new FormControl<string>('', [Validators.required, Validators.minLength(1)]),
+      title: new FormControl<string>('', [Validators.required, Validators.minLength(5)]),
+      description: new FormControl<string>('', [Validators.required, Validators.minLength(10), Validators.maxLength(500)]),
+    });
+  }
+
+  expenseForm!: FormGroup;
+  expenseId= '';
+
+  // expenseForm = new FormGroup({
+  //   price: new FormControl<string>('', [Validators.required, Validators.minLength(1)]),
+  //   title: new FormControl<string>('', [Validators.required, Validators.minLength(5)]),
+  //   description: new FormControl<string>('', [Validators.required, Validators.minLength(10), Validators.maxLength(500)]),
+  // });
+
+  // ngOnInit(): void {
+  // this.expenseForm = this.fb.group({
+  //   price: new FormControl<string>('', [Validators.required, Validators.minLength(1)]),
+  //   title: new FormControl<string>('', [Validators.required, Validators.minLength(5)]),
+  //   description: new FormControl<string>('', [Validators.required, Validators.minLength(10), Validators.maxLength(500)]),
+  // });
+  // }
 
   get price() {
     return this.expenseForm.get('price');
@@ -24,16 +49,38 @@ export class ExpenseFormComponent {
     return this.expenseForm.get('title');
   }
 
+  ngOnInit(): void {
+    this.activetedRoute.params.subscribe({
+      next:(params)=>{
+        this.expenseId = params['id'];
+        this.getExpense(this.expenseId);
+      }
+    })
+  }
+
   onSubmit() {
-    if (this.expenseForm.invalid) {
-      this.expenseForm.markAllAsTouched(); // show validation messages
+    const postValue = this.expenseForm.value;
+
+    if (this.expenseForm.valid) {
+      this.expenseSer.addExpense(this.expenseForm.value);
+      this.router.navigate(['/']);
+    } else {
+      this.expenseForm.markAllAsTouched();
       return;
     }
 
-    const postValue = this.expenseForm.getRawValue();
     console.log('Expense Values:', postValue);
 
     // Reset Form
     this.expenseForm.reset();
+  }
+
+  getExpense(key:string) {
+    this.expenseSer.getExpense(key).snapshotChanges().subscribe({
+      next:(data)=>{
+        let expense = data.payload.toJSON() as IExpense;
+        this.expenseForm.setValue(expense);
+      }
+    })
   }
 }

@@ -1,4 +1,4 @@
-const firebaseConfig = {
+export const firebaseConfig = {
   apiKey: "AIzaSyDL069XS5Z3A1RKUPd8dgOu4ah7DQgm248",
   authDomain: "expense-crud-ang.firebaseapp.com",
   databaseURL: "https://expense-crud-ang-default-rtdb.firebaseio.com",

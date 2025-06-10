@@ -4,7 +4,7 @@
         <form [formGroup]="expenseForm" (ngSubmit)="onSubmit()">
             <div class="mb-3">
                 <label for="price" class="form-label">Price</label>
-                <input type="number" class="form-control" name="price" id="price" aria-describedby="priceHelp"
+                <input type="text" class="form-control" name="price" id="price" aria-describedby="priceHelp"
                     placeholder="Price" formControlName="price">
                 <div id="priceHelp" class="form-text">We'll never share your Price with anyone else.</div>
                 <div *ngIf="expenseForm.get('price')?.touched && expenseForm.get('price')?.invalid">
