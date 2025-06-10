@@ -1,1 +1,19 @@
-<p>expense works!</p>
+<div class="mb-4 d-flex justify-content-between align-items-center">
+    <a [routerLink]="['/expenseform']" class="btn btn-primary">Add Expense</a>
+    <h5>Total Expense : <b class="text-success">$180</b></h5>
+</div>
+
+<div class="d-flex flex-column gap-3">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <h2 class="text-success fw-bold">$ 180</h2>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                content.</p>
+            <div class="d-flex gap-2">
+                <button class="btn btn-sm btn-success">Edit</button>
+                <button class="btn btn-sm btn-danger">Remove</button>
+            </div>
+        </div>
+    </div>
+</div>
