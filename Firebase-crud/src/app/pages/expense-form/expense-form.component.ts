@@ -25,7 +25,7 @@ export class ExpenseFormComponent implements OnInit {
   }
 
   expenseForm!: FormGroup;
-  expenseId= '';
+  expenseId = '';
 
   // expenseForm = new FormGroup({
   //   price: new FormControl<string>('', [Validators.required, Validators.minLength(1)]),
@@ -51,9 +51,11 @@ export class ExpenseFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.activetedRoute.params.subscribe({
-      next:(params)=>{
-        this.expenseId = params['id'];
-        this.getExpense(this.expenseId);
+      next: (params) => {
+        this.expenseId = params['key'];
+        if (this.expenseId) {
+          this.getExpense(this.expenseId);
+        }
       }
     })
   }
@@ -75,11 +77,23 @@ export class ExpenseFormComponent implements OnInit {
     this.expenseForm.reset();
   }
 
-  getExpense(key:string) {
+  getExpense(key: string) {
     this.expenseSer.getExpense(key).snapshotChanges().subscribe({
       next:(data)=>{
         let expense = data.payload.toJSON() as IExpense;
-        this.expenseForm.setValue(expense);
+        // FIX 2: Use patchValue
+        if (expense) {
+            this.expenseForm.patchValue({
+                price: expense.price || '',
+                title: expense.title || '',
+                description: expense.description || ''
+            });
+            console.log("Expense data loaded into form:", expense);
+        } else {
+            console.warn("No expense data found for key:", key);
+            this.router.navigate(['/expenses']); // Redirect if not found
+        }
+        console.log("Raw Firebase data snapshot:", data);
       }
     })
   }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase, AngularFireList } from '@angular/fire/compat/database';
+import { AngularFireDatabase, AngularFireList, AngularFireObject  } from '@angular/fire/compat/database';
 import { IExpense } from '../models/common.model';
 
 @Injectable({
@@ -7,7 +7,7 @@ import { IExpense } from '../models/common.model';
 })
 export class ExpenseService {
   private dbPath = '/expenses';
-  expensesRef: AngularFireList<any>;
+  expensesRef: AngularFireList<IExpense>;
 
   constructor(private db:AngularFireDatabase) {
     this.expensesRef = db.list(this.dbPath)
@@ -17,8 +17,8 @@ export class ExpenseService {
     return this.expensesRef;
   }
 
-  getExpense(key: string) {
-    return this.db.object(`${this.dbPath}/${key}`)
+  getExpense(key: string): AngularFireObject<IExpense> {
+    return this.db.object(`${this.dbPath}/${key}`);
   }
 
   addExpense(expense: IExpense) {
